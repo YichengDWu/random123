@@ -18,9 +18,11 @@ fn recast[
             SIMD[new_type, new_width]
         ]()
         size = (len(l) // 2) * multipler
-    var new_list = List[SIMD[new_type, new_width]](capacity=size)
-    new_list.resize(size)
-    new_list.data = l.steal_data().bitcast[SIMD[new_type, new_width]]()
+    var new_list = List(
+        unsafe_pointer=l.steal_data().bitcast[SIMD[new_type, new_width]](),
+        size=size,
+        capacity=size,
+    )
     return new_list
 
 

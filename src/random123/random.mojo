@@ -50,9 +50,11 @@ fn split(owned key: PRNGKey, num: Int = 2) -> List[PRNGKey]:
 
     """
     var bits = bits[DType.uint64](key, num)
-    var keys = List[PRNGKey](capacity=num)
-    keys.resize(num)
-    keys.data = bits.steal_data().bitcast[PRNGKey]()
+    var keys = List(
+        unsafe_pointer=bits.steal_data().bitcast[PRNGKey](),
+        size=num,
+        capacity=num,
+    )
     return keys
 
 
