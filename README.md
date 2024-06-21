@@ -35,4 +35,4 @@ Here is a comparison with Jax:
 # Heads-up
 
 You might bump into a compiler bug with `DType.float16` or `DType.bfloat16`. 
-I have reported the [issue](https://github.com/modularml/mojo/issues/3073#issue) to the mojo team, but it was closed without explaination. If this is a red flag for you, it's not recommanded to use the package.
+See the [issue](https://github.com/modularml/mojo/issues/3073#issue).
